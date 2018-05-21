@@ -21,14 +21,33 @@ Class Sb extends \think\Controller
      * 创建PDF
      */
     public function createPdf(){
-        if(1){
+
+        if($this->getExcelInfo()){
             $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(13,10,13,0),false);
             ob_start();
             require_once(WEB_ROOT . '/public/res/special/sb/taxlist.php');
             $html = ob_get_clean();
             $html2pdf->setDefaultFont('simhei');
             $html2pdf->writeHTML($html);
-            $html2pdf->output();
+            // 保存文件
+            switch($type){
+                case 1:
+                    $filename = 'code';
+                    break;
+                case 2:
+                    $filename = 'code'.'180';
+                    break;
+                default:
+                    break;
+            }
+            $date = '20180521';
+            $sum = '1280.30';
+            $sum = sprintf("%.2f",$sum);
+            $tempArr = explode('.',$sum);
+            $sumStr = $tempArr[0].$tempArr[1];
+            $savePath = WEB_ROOT.'/public/special/sb/pdf/'.$date.$sumStr.'/'$filename;
+            $html2pdf->output($savePath,'I');
+//            $html2pdf->output($savePath,'FI');
             die('FINISH');
         }else{
             return $this->error('上传文件不存在！');
