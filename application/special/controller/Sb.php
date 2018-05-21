@@ -30,6 +30,7 @@ Class Sb extends \think\Controller
             $html2pdf->setDefaultFont('simhei');
             $html2pdf->writeHTML($html);
             // 保存文件
+            $type = 1;
             switch($type){
                 case 1:
                     $filename = 'code';
@@ -41,11 +42,11 @@ Class Sb extends \think\Controller
                     break;
             }
             $date = '20180521';
-            $sum = '1280.30';
+            $sum = '1280.00';
             $sum = sprintf("%.2f",$sum);
             $tempArr = explode('.',$sum);
             $sumStr = $tempArr[0].$tempArr[1];
-            $savePath = WEB_ROOT.'/public/special/sb/pdf/'.$date.$sumStr.'/'$filename;
+            $savePath = WEB_ROOT.'/public/special/sb/pdf/'.$date.$sumStr.'/'.$filename;
             $html2pdf->output($savePath,'I');
 //            $html2pdf->output($savePath,'FI');
             die('FINISH');
