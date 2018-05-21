@@ -1,0 +1,6 @@
+PHP生成PDF完美支持中文,解决TCPDF乱码
+https://blog.csdn.net/hopewtc/article/details/6821067
+g2017
+    http://www.gdltax.org/etax/dzsp/dzspdy/dzspcyinit.html?spzb=%25E4%25B8%25AA%25E7%25A8%258E%25E7%25BA%25B3%25E7%25A8%258E%25E6%25B8%2585%25E5%258D%2595&spbh=201805000314734&tfrq=2018-05-09&hjje=1886.10&pzzl=7&special=1805
+w2017
+    http://www.gdltax.org/etax/dzsp/dzspdy/dzspcyinit.html?spzb=%2528180%2529%25E7%25B2%25A4%25E5%259C%25B0%25E8%25AF%2581%25E6%2598%258E&spbh=00459145&tfrq=2018-05-09&hjje=1886.10&pzzl=4&special=1805
