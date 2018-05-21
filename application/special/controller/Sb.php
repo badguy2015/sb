@@ -2,7 +2,8 @@
 
 namespace app\special\controller;
 
-require WEB_ROOT.'/vendor/html2pdf/vendor/autoload.php';
+require(WEB_ROOT.'/vendor/html2pdf/vendor/autoload.php');
+require(WEB_ROOT.'/vendor/system/PHPExcel/Classes/PHPExcel.php');
 
 use Spipu\Html2Pdf\Html2Pdf;
 
@@ -59,7 +60,40 @@ Class Sb extends \think\Controller
      * 获取EXCEL表格
      * @return bool
      */
-    private function getExcelInfo(){
+    public function getExcelInfo(){
+        if($this->getExcelInfo()||1){
+            $objPHPExcel = new PHPExcel();
+//            $filename = "E:/www/demo/phpexcel/test01.xlsx";//要读取的excel文件
+
+            if (!file_exists($this->_uploadFile)) {
+                exit("not found.\n");
+            }
+
+            $reader = PHPExcel_IOFactory::createReader('Excel2007'); //设置以Excel5格式(Excel97-2003工作簿)
+            $reader->setLoadAllSheets();
+
+
+            $PHPExcel = $reader->load($filename); // 载入excel文件
+
+            $sheetNum = $PHPExcel->getSheetCount();       // 获取工作表的个数
+            $sheetNames = $PHPExcel->getSheetNames();       // 获取所有工作表的名字数组
+//echo $sheetNum.'-';
+//print_r($sheetNames);
+            for($i=0;$i<$sheetNum;$i++){
+                $sheet = $PHPExcel->getSheet($i); // 读取第一個工作表
+            }
+            echo '<pre/>';
+// 获取表格所有数组
+            print_r($sheet->toArray());
+            die('finish');
+        }
+    }
+
+    /**
+     * 保存上传文件
+     * @return bool
+     */
+    private function saveUploadFile(){
         // 接收临时文件
         $newName = date('YmdH').rand(1000,9999).'_'.$_FILES['excel_one']['name'];
         // 设计文件保存路径
