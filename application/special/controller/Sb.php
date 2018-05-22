@@ -6,7 +6,6 @@ require(WEB_ROOT.'/vendor/html2pdf/vendor/autoload.php');
 require(WEB_ROOT.'/vendor/system/PHPExcel/Classes/PHPExcel.php');
 
 use Spipu\Html2Pdf\Html2Pdf;
-
 Class Sb extends \think\Controller
 {
     private $_uploadFile;
@@ -23,11 +22,12 @@ Class Sb extends \think\Controller
      */
     public function createPdf(){
 
-        if($this->getExcelInfo()){
+        if(1){
             $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(13,10,13,0),false);
             ob_start();
             require_once(WEB_ROOT . '/public/res/special/sb/taxlist.php');
             $html = ob_get_clean();
+//            $html = '<h1>aaa</h1>';
             $html2pdf->setDefaultFont('simhei');
             $html2pdf->writeHTML($html);
             // 保存文件
@@ -48,7 +48,7 @@ Class Sb extends \think\Controller
             $tempArr = explode('.',$sum);
             $sumStr = $tempArr[0].$tempArr[1];
             $savePath = WEB_ROOT.'/public/special/sb/pdf/'.$date.$sumStr.'/'.$filename;
-            $html2pdf->output($savePath,'I');
+            $html2pdf->output($savePath.'.pdf','I');
 //            $html2pdf->output($savePath,'FI');
             die('FINISH');
         }else{
@@ -61,7 +61,9 @@ Class Sb extends \think\Controller
      * @return bool
      */
     public function getExcelInfo(){
-        if($this->getExcelInfo()||1){
+        $objPHPExcel = new PHPExcel();
+        die('ok');
+        if(1){
             $objPHPExcel = new PHPExcel();
 //            $filename = "E:/www/demo/phpexcel/test01.xlsx";//要读取的excel文件
 
