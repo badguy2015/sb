@@ -82,8 +82,10 @@
 </table>
 <table>
     <tr>
-        <td style="width:30mm;height:35mm;"><img src="<?php WEB_ROOT ?>/public/res/images/a.jpg" width=111 /></td>
-        <td style="width:40mm;"><img src="<?php echo WEB_ROOT ?>/public/res/images/b.jpg" width=85 /></td>
+<!--        <td style="width:30mm;height:35mm;"><img src="--><?php //WEB_ROOT ?><!--/public/res/images/a.jpg" width=111 /></td>-->
+<!--        <td style="width:40mm;"><img src="--><?php //echo WEB_ROOT ?><!--/public/res/images/b.jpg" width=85 /></td>-->
+        <td style="width:30mm;height:35mm;"><img src="http://myy.d.easyder.com/res/home/images/temp/wx_code.jpg" width=111 /></td>
+        <td style="width:40mm;"><img src="http://myy.d.easyder.com/res/home/images/temp/wx_code.jpg" width=85 /></td>
         <td style="width:111mm;padding-right:0.3px;vertical-align:middle;line-height:5mm;">感谢您为祖国繁荣昌盛做出贡献！<br/><br/>
             Thank you for your contribution to<br/><br/>
             China's flourishing and prosperity!</td>

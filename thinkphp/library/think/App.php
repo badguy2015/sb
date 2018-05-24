@@ -376,6 +376,7 @@ class App extends Container
         $this->log->init($config['log']);
         $this->session->setConfig($config['session']);
         $this->debug->setConfig($config['trace']);
+        $this->cache->init($config['cache'], true);
 
         // 加载当前模块语言包
         $this->lang->load($this->appPath . $module . DIRECTORY_SEPARATOR . 'lang' . DIRECTORY_SEPARATOR . $this->request->langset() . '.php');
@@ -414,26 +415,11 @@ class App extends Container
             // 监听app_dispatch
             $this->hook->listen('app_dispatch');
 
-            // 获取应用调度信息
-            if (!$this->appDebug && $this->config->get('route_check_cache')) {
-                $routeKey = $this->getRouteCacheKey();
-
-                if ($this->cache->has($routeKey)) {
-                    $this->dispatch = $this->cache->get($routeKey);
-                }
-            }
-
             $dispatch = $this->dispatch;
 
             if (empty($dispatch)) {
                 // 路由检测
                 $dispatch = $this->routeCheck();
-
-                try {
-                    if (isset($routeKey)) {
-                        $this->cache->tag('route_cache')->set($routeKey, $dispatch);
-                    }
-                } catch (\Exception $e) {}
             }
 
             // 记录当前调度信息
@@ -568,6 +554,15 @@ class App extends Container
      */
     public function routeCheck()
     {
+        // 获取应用调度信息
+        if (!$this->appDebug && $this->config->get('route_check_cache')) {
+            $routeKey = $this->getRouteCacheKey();
+
+            if ($this->cache->has($routeKey)) {
+                return $this->cache->get($routeKey);
+            }
+        }
+
         $path = $this->request->path();
 
         // 路由检测
@@ -604,7 +599,19 @@ class App extends Container
         $must = !is_null($this->routeMust) ? $this->routeMust : $this->route->config('url_route_must');
 
         // 路由检测 返回一个Dispatch对象
-        return $this->route->check($path, $must);
+        $dispatch = $this->route->check($path, $must);
+
+        if (!empty($routeKey)) {
+            try {
+                $this->cache
+                    ->tag('route_cache')
+                    ->set($routeKey, $dispatch);
+            } catch (\Exception $e) {
+                // 存在闭包的时候缓存无效
+            }
+        }
+
+        return $dispatch;
     }
 
     /**

@@ -1,41 +1,182 @@
 [
     {
-        "name": "phpexcel/phpexcel",
-        "version": "v1.7.7",
-        "version_normalized": "1.7.7.0",
+        "name": "phpoffice/phpexcel",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/ddeboer/phpexcel.git",
-            "reference": "de9c8871a87ce9be354d35f5e966dd65a0c7c6d2"
+            "url": "https://github.com/PHPOffice/PHPExcel.git",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
         },
         "dist": {
             "type": "zip",
-            "url": "https://files.phpcomposer.com/files/ddeboer/phpexcel/de9c8871a87ce9be354d35f5e966dd65a0c7c6d2.zip",
-            "reference": "de9c8871a87ce9be354d35f5e966dd65a0c7c6d2",
+            "url": "https://files.phpcomposer.com/files/PHPOffice/PHPExcel/372c7cbb695a6f6f1e62649381aeaa37e7e70b32.zip",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
             "shasum": ""
         },
         "require": {
-            "php": ">5.2.0"
+            "ext-xml": "*",
+            "ext-xmlwriter": "*",
+            "php": ">=5.2.0"
         },
-        "time": "2012-09-04T18:29:37+00:00",
+        "time": "2015-05-01T07:00:55+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "PHPExcel": "Classes"
+                "PHPExcel": "Classes/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
-            "GNU"
+            "LGPL"
         ],
-        "description": "PHPExcel - OpenXML - Create Excel2007 documents in PHP - Spreadsheet engine",
+        "authors": [
+            {
+                "name": "Maarten Balliauw",
+                "homepage": "http://blog.maartenballiauw.be"
+            },
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://blog.rootslabs.net"
+            },
+            {
+                "name": "Erik Tilt"
+            }
+        ],
+        "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
         "homepage": "http://phpexcel.codeplex.com",
         "keywords": [
+            "OpenXML",
             "excel",
-            "xls"
+            "php",
+            "spreadsheet",
+            "xls",
+            "xlsx"
         ],
-        "abandoned": "phpoffice/phpexcel"
+        "abandoned": "phpoffice/phpspreadsheet"
+    },
+    {
+        "name": "spipu/html2pdf",
+        "version": "v5.1.0",
+        "version_normalized": "5.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spipu/html2pdf.git",
+            "reference": "7953415df897c2c9450d7a90480f18f7e044a2e9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/spipu/html2pdf/7953415df897c2c9450d7a90480f18f7e044a2e9.zip",
+            "reference": "7953415df897c2c9450d7a90480f18f7e044a2e9",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^5.4 || ^7.0",
+            "tecnickcom/tcpdf": "^6.2"
+        },
+        "require-dev": {
+            "phake/phake": "^2.0",
+            "phpunit/phpunit": "^4.0 || ^5.0",
+            "squizlabs/php_codesniffer": "^3.0"
+        },
+        "suggest": {
+            "ext-gd": "Allows to embed images into the PDF",
+            "fagundes/zff-html2pdf": "if you need to integrate Html2Pdf with Zend Framework 2 (zf2)"
+        },
+        "time": "2018-01-23T13:32:32+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spipu\\Html2Pdf\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "OSL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Spipu",
+                "homepage": "https://github.com/spipu",
+                "role": "Developer"
+            }
+        ],
+        "description": "Html2Pdf is a HTML to PDF converter written in PHP5 (it uses TCPDF). OFFICIAL PACKAGE",
+        "homepage": "http://html2pdf.fr/",
+        "keywords": [
+            "html",
+            "html2pdf",
+            "pdf"
+        ]
+    },
+    {
+        "name": "tecnickcom/tcpdf",
+        "version": "6.2.17",
+        "version_normalized": "6.2.17.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tecnickcom/TCPDF.git",
+            "reference": "64fc19439863e1b1314487a72a74d9bfd0b55a53"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/tecnickcom/TCPDF/64fc19439863e1b1314487a72a74d9bfd0b55a53.zip",
+            "reference": "64fc19439863e1b1314487a72a74d9bfd0b55a53",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.0"
+        },
+        "time": "2018-02-24T11:48:20+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "config",
+                "include",
+                "tcpdf.php",
+                "tcpdf_parser.php",
+                "tcpdf_import.php",
+                "tcpdf_barcodes_1d.php",
+                "tcpdf_barcodes_2d.php",
+                "include/tcpdf_colors.php",
+                "include/tcpdf_filters.php",
+                "include/tcpdf_font_data.php",
+                "include/tcpdf_fonts.php",
+                "include/tcpdf_images.php",
+                "include/tcpdf_static.php",
+                "include/barcodes/datamatrix.php",
+                "include/barcodes/pdf417.php",
+                "include/barcodes/qrcode.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL-3.0"
+        ],
+        "authors": [
+            {
+                "name": "Nicola Asuni",
+                "email": "info@tecnick.com",
+                "role": "lead"
+            }
+        ],
+        "description": "TCPDF is a PHP class for generating PDF documents and barcodes.",
+        "homepage": "http://www.tcpdf.org/",
+        "keywords": [
+            "PDFD32000-2008",
+            "TCPDF",
+            "barcodes",
+            "datamatrix",
+            "pdf",
+            "pdf417",
+            "qrcode"
+        ]
     },
     {
         "name": "topthink/framework",
@@ -44,12 +185,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/top-think/framework.git",
-            "reference": "e6c0c586e1a6b8ecf9838bdef99ebd3dbe45095a"
+            "reference": "6448c4b42599d58125ba1307aa6d3defa044aeb9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://files.phpcomposer.com/files/top-think/framework/e6c0c586e1a6b8ecf9838bdef99ebd3dbe45095a.zip",
-            "reference": "e6c0c586e1a6b8ecf9838bdef99ebd3dbe45095a",
+            "url": "https://files.phpcomposer.com/files/top-think/framework/6448c4b42599d58125ba1307aa6d3defa044aeb9.zip",
+            "reference": "6448c4b42599d58125ba1307aa6d3defa044aeb9",
             "shasum": ""
         },
         "require": {
@@ -65,7 +206,7 @@
             "sebastian/phpcpd": "2.*",
             "squizlabs/php_codesniffer": "2.*"
         },
-        "time": "2018-05-18T05:30:47+00:00",
+        "time": "2018-05-19T13:37:11+00:00",
         "type": "think-framework",
         "installation-source": "dist",
         "notification-url": "https://packagist.org/downloads/",
