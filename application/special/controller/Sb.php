@@ -27,6 +27,9 @@ Class Sb extends \think\Controller
         $success = $this->saveUploadFile();
         // 读取上传文件
         $success && $excelArr = $this->getExcelInfo();
+        echo '<pre/>';
+        print_r($excelArr);
+        die;
         // 生成&&保存PDF
         if($excelArr){
             $html2pdf = new Html2Pdf('P', 'A4', 'fr', true, 'UTF-8', array(13,10,13,0),false);
